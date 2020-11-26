@@ -40,6 +40,12 @@ public class Topic_01_check_enviroment {
 		// Login form displayed
 		Assert.assertTrue(driver.findElement(By.xpath("//form[@name='frmLogin']")).isDisplayed());
 	}
+	
+	@Test
+	public void TC_04_LoginFormDisplayed() {
+		// Login form displayed
+		Assert.assertTrue(driver.findElement(By.xpath("//form[@name='Remove']")).isDisplayed());
+	}
 
 	@AfterClass
 	public void afterClass() {
