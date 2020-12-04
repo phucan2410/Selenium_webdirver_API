@@ -56,6 +56,7 @@ public class Topic_02_Xpath_CSS {
 //	  //Assert.assertEquals(driver.findElement(By.id("advice-validate-password-pass")).getText(), "Please enter 6 or more characters without leading or trailing spaces.");
 //	  Assert.assertEquals(driver.findElement(By.xpath("//div[@class='input-box']//div[@id='advice-validate-password-pass']")).getText(), "Please enter 6 or more characters without leading or trailing spaces.");
 //  }
+  
 //  @Test
 //  public void TC_04() {
 //	 driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
@@ -65,32 +66,46 @@ public class Topic_02_Xpath_CSS {
 //	 
 //	 Assert.assertEquals(driver.findElement(By.xpath("//span[text()='Invalid login or password.']")).getText(), "Invalid login or password.");
 //	 }
+  
+//  @Test
+//  public void TC_05() {
+//		 driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
+//		 driver.findElement(By.xpath("//div[@class='buttons-set']//a[@class='button']")).click();
+//		 driver.findElement(By.id("firstname")).sendKeys("An");
+//		 driver.findElement(By.id("middlename")).sendKeys("Phuc");
+//		 driver.findElement(By.id("lastname")).sendKeys("Nguyen");
+//		 driver.findElement(By.id("email_address")).sendKeys("phucan24103@gmail.com");
+//		 driver.findElement(By.id("password")).sendKeys("phucan2410");
+//		 driver.findElement(By.id("confirmation")).sendKeys("phucan2410");
+//		 driver.findElement(By.xpath("//div[@class='input-box']//input[@type='checkbox']")).click();
+//		 driver.findElement(By.xpath("//span[text()='Register']")).click();
+//		 
+//		 Assert.assertEquals(driver.findElement(By.xpath("//span[text()='Thank you for registering with Main Website Store.']")).getText(), "Thank you for registering with Main Website Store.");
+//		 driver.findElement(By.xpath("//a[text()='Account Information']")).click();
+//		 Assert.assertEquals(driver.findElement(By.id("firstname")).getText(), "An");
+//		 Assert.assertEquals(driver.findElement(By.id("lastname")).getText(), "Nguyen");
+//		 Assert.assertEquals(driver.findElement(By.id("email_address")).getText(), "phucan24103@gmail.com");
+//		 driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[text()='Account']")).click();
+//		 driver.findElement(By.xpath("//a[text()='Log Out']")).click();
+//		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		 String URL = driver.getCurrentUrl();
+//		 
+//		 Assert.assertTrue(URL.contains("http://live.demoguru99.com/index.php/"));
+//		 System.out.println(URL);
+//		 
+ // }
   @Test
-  public void TC_05() {
+  public void TC_06() {
 		 driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
-		 driver.findElement(By.xpath("//div[@class='buttons-set']//a[@class='button']")).click();
-		 driver.findElement(By.id("firstname")).sendKeys("An");
-		 driver.findElement(By.id("middlename")).sendKeys("Phuc");
-		 driver.findElement(By.id("lastname")).sendKeys("Nguyen");
-		 driver.findElement(By.id("email_address")).sendKeys("phucan24103@gmail.com");
-		 driver.findElement(By.id("password")).sendKeys("phucan2410");
-		 driver.findElement(By.id("confirmation")).sendKeys("phucan2410");
-		 driver.findElement(By.xpath("//div[@class='input-box']//input[@type='checkbox']")).click();
-		 driver.findElement(By.xpath("//span[text()='Register']")).click();
+		 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("phucan24103@gmail.com");
+		 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Password']")).sendKeys("phucan2410");
+		 driver.findElement(By.xpath("//div[@class='buttons-set']//span[text()='Login']")).click();;
+		 Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div[1]/div/div[2]/div/div[2]/div/div/div[1]/h1")).getText(), "MY DASHBOARD");
+		 Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div[1]/div/div[2]/div/div[2]/div/div/div[2]/p[1]/strong")).getText(), "Hello, An Phuc Nguyen!");
+		 Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\\\"top\\\"]/body/div[1]/div/div[2]/div/div[2]/div/div/div[3]/div[2]/div[1]/div/div[2]/p")).getText(), "An Phuc Nguyen");
+	
+
 		 
-		 Assert.assertEquals(driver.findElement(By.xpath("//span[text()='Thank you for registering with Main Website Store.']")).getText(), "Thank you for registering with Main Website Store.");
-		 driver.findElement(By.xpath("//a[text()='Account Information']")).click();
-		 Assert.assertEquals(driver.findElement(By.id("firstname")).getText(), "An");
-		 Assert.assertEquals(driver.findElement(By.id("lastname")).getText(), "Nguyen");
-		 Assert.assertEquals(driver.findElement(By.id("email_address")).getText(), "phucan24103@gmail.com");
-		 driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[text()='Account']")).click();
-		 driver.findElement(By.xpath("//a[text()='Log Out']")).click();
-		 String URL = driver.getCurrentUrl();
-		 
-		 Assert.assertTrue(URL.contains("http://live.demoguru99.com/index.php/"));
-		 System.out.println(URL);
-		 
-  }
   
   
   
@@ -99,5 +114,5 @@ public class Topic_02_Xpath_CSS {
 //  public void afterMethod() {
 //	  driver.quit();
 //  }
-
+  }
 }
