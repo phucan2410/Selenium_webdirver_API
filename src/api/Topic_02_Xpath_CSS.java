@@ -3,7 +3,9 @@ package api;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
 
-
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,15 +14,25 @@ import org.testng.annotations.AfterMethod;
 
 public class Topic_02_Xpath_CSS {
 	WebDriver driver;
+	Random rand;
+	String emailAddress, fisrtname, lastname;
+	
+	
+	
   @BeforeMethod
   public void beforeMethod() {
   driver = new FirefoxDriver();
+  rand = new Random();
 	driver.manage().window().maximize();
 	driver.get("http://live.demoguru99.com/");
+	emailAddress = "phucan" + rand.nextInt(99999) + "@gmail.com";
+	fisrtname = "An";
+	lastname = "Phuc Nguyen";
   }
   
   @Test
   public void TC_01_Empty_Email_Password() {
+	  driver.get("http://live.demoguru99.com/");
 	  //Click 
 	  driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
 	  
@@ -32,9 +44,10 @@ public class Topic_02_Xpath_CSS {
 	  //Expected result
 	  Assert.assertEquals(driver.findElement(By.id("advice-required-entry-pass")).getText(), "This is a required field.");
 	  
- }
+}
   @Test
   public void TC_02_Invailid_Email() {
+	  driver.get("http://live.demoguru99.com/");
 	  driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
 	  driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("123321@123.123");
 	  driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Password']")).sendKeys("123456");
@@ -46,8 +59,9 @@ public class Topic_02_Xpath_CSS {
   
   	@Test
   	public void TC_03() {
+  	driver.get("http://live.demoguru99.com/");
 	  driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
-	  driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("phucan2410@gmail.com");
+	  driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("phucan24123@gmail.com");
 	  driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Password']")).sendKeys("1234");
 	  driver.findElement(By.xpath("//div[@class='buttons-set']//span[text()='Login']")).click();;
 	  
@@ -57,8 +71,9 @@ public class Topic_02_Xpath_CSS {
   
   	@Test
   	public void TC_04() {
+  		driver.get("http://live.demoguru99.com/");
 	 driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
-	 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("automation@gmail.com");
+	 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("phucan24123@gmail.com");
 	 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Password']")).sendKeys("123123123");
 	 driver.findElement(By.xpath("//div[@class='buttons-set']//span[text()='Login']")).click();
 	 
@@ -67,6 +82,7 @@ public class Topic_02_Xpath_CSS {
   
   	@Test
   	public void TC_05() {
+  		driver.get("http://live.demoguru99.com/");
 		 driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
 		 driver.findElement(By.xpath("//div[@class='buttons-set']//a[@class='button']")).click();
 		 driver.findElement(By.id("firstname")).sendKeys("An");
@@ -95,18 +111,26 @@ public class Topic_02_Xpath_CSS {
   
  	@Test
  	public void TC_06() {
+ 		driver.get("http://live.demoguru99.com/");
 		 driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
-		 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("phucan24103@gmail.com");
+		 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Email Address']")).sendKeys("phucan24123@gmail.com");
 		 driver.findElement(By.xpath("//div[@class='input-box']//input[@title='Password']")).sendKeys("phucan2410");
 		 driver.findElement(By.xpath("//div[@class='buttons-set']//span[text()='Login']")).click();;
-		 Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div[1]/div/div[2]/div/div[2]/div/div/div[1]/h1")).getText(), "MY DASHBOARD");
-		 Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"top\"]/body/div[1]/div/div[2]/div/div[2]/div/div/div[2]/p[1]/strong")).getText(), "Hello, An Phuc Nguyen!");
+		 Assert.assertEquals(driver.findElement(By.xpath("//h1[text()='My Dashboard']")).getText(), "MY DASHBOARD");
+		 driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+		 //tach chuoi
+		 
+		 Assert.assertEquals(driver.findElement(By.xpath("//strong[text()= 'Hello, An Phuc Nguyen!']")).getText(), "Hello, " + fisrtname + " " + lastname + "!");
+		 
+		 String contactInformation = driver.findElement(By.xpath("//h3[text()='Contact Information']/parent::div/following-sibling::div[@class='box-content']/p")).getText();
+		 Assert.assertTrue(contactInformation.contains("An Phuc Nguyen"));
+		 Assert.assertTrue(contactInformation.contains("phucan24103@gmail.com"));
  	}
 	
-
+ 
  	@AfterMethod
  	public void afterMethod() {
 	  driver.quit();
   }
- }
+}
 
