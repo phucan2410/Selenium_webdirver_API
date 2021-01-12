@@ -24,18 +24,18 @@ public class WebDriver_element_command {
 	  WebElement element = driver.findElement(By.xpath(""));
 	  
 	  //Xóa dữ liệu 
-	  element.clear();
+	  element.clear(); //**hay dùng
 	  
 	  // Nhập dữ liệu textbox
-	  
-	  element.sendKeys("");
+	   
+	  element.sendKeys(""); //**hay dùng
 
 	  //Click vào button/checkbox/link/
 	  
-	  element.click();
+	  element.click(); //**hay dùng 
 	  
 	  //Get tham số 
-	  element.getAttribute("placeholder");
+	  element.getAttribute("placeholder"); //**hay dùng
 	  
 	  //Get stype của element/font/size/color
 	  element.getCssValue("color");
@@ -53,14 +53,25 @@ public class WebDriver_element_command {
 	  
   	  
   	  // lấy ra text của element bất kỳ text k nằm trong attribute
-	  element.getText();
+	  element.getText(); //**hay dùng
 	  
 	  // Kiểm tra mong muống đang hiển thị
 	  
-	  Assert.assertTrue(element.isDisplayed());
+	  Assert.assertTrue(element.isDisplayed()); //**hay dùng
   	
 	  // Có thể thao tác được
-	  Assert.assertTrue(element.isEnabled());
+	  Assert.assertTrue(element.isEnabled()); //**hay dùng
+	  
+	  //Đã được chọn thành công (Radio button/ checkbox)
+	  Assert.assertTrue(element.isSelected()); //**hay dùng
+	  
+	  // Kiểm tra không mong muốn element hiển thị
+	  Assert.assertFalse(element.isDisplayed());
+	  
+	  //Enter vào trong 1 form
+	  element.submit(); 
+	  
+	  
   }
   	  
   
