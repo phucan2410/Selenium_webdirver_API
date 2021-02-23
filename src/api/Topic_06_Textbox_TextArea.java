@@ -60,7 +60,7 @@ public class Topic_06_Textbox_TextArea {
 	  Assert.assertTrue(driver.findElement(By.xpath("td[text()='Manger Id : mngr303746']")).isDisplayed());
   }
   
-  @Test
+  
   public void TC_03() {
 	  driver.findElement(nameTextboxBy).sendKeys(name);
 	  driver.findElement(dobTextboxBy).sendKeys(dob);

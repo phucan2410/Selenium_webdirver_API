@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 
-public class WebDriver_element_command {
+public class Topic_06_WebDriver_element_command {
   WebDriver driver;
   @BeforeMethod
   public void beforeMethod() {
