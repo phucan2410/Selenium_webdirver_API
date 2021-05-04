@@ -34,7 +34,7 @@ public class Topic_08_Customer_DropDown {
 	  System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
 	  driver = new ChromeDriver();
 	  
-	  
+	  jsExcutor = (JavascriptExecutor) driver;
 	  exlicitWait = new WebDriverWait(driver, 30);
 	  
   }
@@ -57,20 +57,40 @@ public class Topic_08_Customer_DropDown {
 //	  sleepInSecound(4);
 //  }
   
+//  @Test
+//  public void TC_03_Angular() {
+//	driver.get("https://ej2.syncfusion.com/angular/demos/#/material/drop-down-list/data-binding");
+//	
+//	SelectItemCustomDropDown("//ejs-dropdownlist[@id='games']", "//ul[@id='games_options']/li", "Basketball");
+//	sleepInSecound(2);
+//	Assert.assertEquals(gettextangular(), "Basketball");
+//	
+//	SelectItemCustomDropDown("//ejs-dropdownlist[@id='games']", "//ul[@id='games_options']/li", "Cricket");
+//	sleepInSecound(2);
+//	Assert.assertEquals(gettextangular(), "Cricket");
+//	
+//	
+//	SelectItemCustomDropDown("//ejs-dropdownlist[@id='games']", "//ul[@id='games_options']/li", "Football");
+//	sleepInSecound(2);
+//	Assert.assertEquals(gettextangular(), "Football");
+//	
+//  }
+//  
   @Test
-  public void TC_03_Angular() {
-	driver.get("https://ej2.syncfusion.com/angular/demos/#/material/drop-down-list/data-binding");
-	
-	SelectItemCustomDropDown("ejs-dropdownlist[@id='gamne']", "ul[@id='games_options']/li", "Basketball");
-	sleepInSecound(2);
-	Assert.assertEquals(gettextangular(), "Basketball");
-	SelectItemCustomDropDown("ejs-dropdownlist[@id='gamne']", "ul[@id='games_options']/li", "Cricket");
-	Assert.assertEquals(gettextangular(), "Cricket");
-	sleepInSecound(2);
-	
-	SelectItemCustomDropDown("ejs-dropdownlist[@id='gamne']", "ul[@id='games_options']/li", "Football");
-	Assert.assertEquals(gettextangular(), "Football");
-	sleepInSecound(2);
+  public void TC_04_React() {
+	  driver.get("https://react.semantic-ui.com/maximize/dropdown-example-selection/");
+	  SelectItemCustomDropDown("//div[@role='listbox']", "//div[@role='option']/span", "Jenny Hess");
+	  sleepInSecound(2);
+	  Assert.assertEquals(driver.findElement(By.xpath("//div[@role='alert']")).getText(), "Jenny Hess");
+	  
+	  SelectItemCustomDropDown("//div[@role='listbox']", "//div[@role='option']/span", "Elliot Fu");
+	  sleepInSecound(2);
+	  Assert.assertEquals(driver.findElement(By.xpath("//div[@role='alert']")).getText(), "Elliot Fu");
+	  
+	  SelectItemCustomDropDown("//div[@role='listbox']", "//div[@role='option']/span", "Christian");
+	  sleepInSecound(2);
+	  Assert.assertEquals(driver.findElement(By.xpath("//div[@role='alert']")).getText(), "Christian");
+	  
   }
   
   
@@ -82,20 +102,20 @@ public class Topic_08_Customer_DropDown {
   
   public void SelectItemCustomDropDown(String parentXpath, String allItemXpath, String string) {
 	  
-	  // chờ cho các item đc hiểm thị ra trước khi chọn
+	  // chá»� cho cÃ¡c item Ä‘c hiá»ƒm thá»‹ ra trÆ°á»›c khi chá»�n
 	  driver.findElement(By.xpath(parentXpath)).click();
 	  sleepInSecound(1);
 	  
-	  // lấy hết tất cả các item đưa vào 1 list
+	  // láº¥y háº¿t táº¥t cáº£ cÃ¡c item Ä‘Æ°a vÃ o 1 list
 	  exlicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(allItemXpath)));
 	  List<WebElement> allItem = driver.findElements(By.xpath(allItemXpath));
 	  
-	  // Dùng vòng lặp duyệt qua từng Item
+	  // DÃ¹ng vÃ²ng láº·p duyá»‡t qua tá»«ng Item
 	  
 	  for (WebElement item : allItem) {
-		  //Duyệt qua từng item
-		  //text get ra = text mong muốn thì dừng lại 
-		  //thoát khỏi vòng lặp
+		  //Duyá»‡t qua tá»«ng item
+		  //text get ra = text mong muá»‘n thÃ¬ dá»«ng láº¡i 
+		  //thoÃ¡t khá»�i vÃ²ng láº·p
 		  if(item.getText().equals(string)) {
 			  item.click();
 			  break;
@@ -105,7 +125,7 @@ public class Topic_08_Customer_DropDown {
 //	  exlicitWait.until()
   }
   
-  // Hàm sleep
+  // HÃ m sleep
   public void sleepInSecound(long timeout) {
 	  try {
 		Thread.sleep(timeout * 1000);

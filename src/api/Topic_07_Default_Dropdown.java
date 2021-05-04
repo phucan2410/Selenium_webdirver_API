@@ -52,7 +52,7 @@ public class Topic_07_Default_Dropdown {
 	  
   }
   
-  @Test(invocationCount = 1)
+  @Test
   public void TC_01_register() {
 	  //1 mở trang register 
 	  driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
